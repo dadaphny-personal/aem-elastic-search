@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+	<filter root="/oak:index/ntFolderDamLucene-1-custom-1/" />
+    <filter root="/apps/aem-elastic-search/clientlibs"/>
+    <filter root="/apps/aem-elastic-search/components"/>
+    <filter root="/apps/aem-elastic-search/i18n"/>
+    <filter root="/apps/aem-elastic-search/install/" />
+</workspaceFilter>

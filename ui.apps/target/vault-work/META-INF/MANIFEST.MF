@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Created-By: Apache Jackrabbit FileVault - Package Maven Plugin 1.1.4
+Build-Jdk-Spec: 23
+Implementation-Title: Elastic Search AEM - UI apps
+Implementation-Version: 1.0.0-SNAPSHOT
+Content-Package-Type: mixed
+Content-Package-Id: com.aem.elastic.search:aem-elastic-search.ui.apps:1.
+ 0.0-SNAPSHOT
+Content-Package-Description: UI apps package for Elastic Search AEM
+Content-Package-Roots: /apps/aem-elastic-search/clientlibs,/apps/aem-ela
+ stic-search/components,/apps/aem-elastic-search/i18n,/apps/aem-elastic-
+ search/install,/oak:index/ntFolderDamLucene-1-custom-1
+

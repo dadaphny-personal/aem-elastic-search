@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Elastic Search AEM - UI config</comment>
+<entry key="cloudManagerTarget">none</entry>
+<entry key="allowIndexDefinitions">false</entry>
+<entry key="created">2025-09-22T04:52:46.608Z</entry>
+<entry key="groupId">com.aem.elastic.search</entry>
+<entry key="name">aem-elastic-search.ui.config</entry>
+<entry key="description">UI config package for Elastic Search AEM</entry>
+<entry key="artifactId">aem-elastic-search.ui.config</entry>
+<entry key="version">1.0.0-SNAPSHOT</entry>
+<entry key="packageType">container</entry>
+<entry key="requiresRoot">false</entry>
+<entry key="group">com.aem.elastic.search</entry>
+</properties>

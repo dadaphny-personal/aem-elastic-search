@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:oak="http://jackrabbit.apache.org/oak/ns/1.0" 
+	xmlns:dam="http://www.day.com/dam/1.0" 
+	xmlns:jcr="http://www.jcp.org/jcr/1.0" 	
+	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+	xmlns:rep="internal"
+	jcr:primaryType="oak:QueryIndexDefinition"
+    async="[async,nrt]"
+	async_x0040_elasticsearch="[]"
+    compatVersion="{Long}2"
+	evaluatePathRestrictions="{Boolean}true"
+	includePaths="[/content/dam]"
+	excludePaths="[/content/dam/training-and-support]"
+	queryPaths="[/content/dam]"
+	reindex="{Boolean}false"
+	reindexCount="{Long}1"
+	seed="{Long}-1381518464214152320"
+	tags="[assetsListing,assetsOmnisearch]"
+	type="lucene">
+
+	<aggregates jcr:primaryType="nt:unstractured">
+		<nt:folder jcr:primaryType="nt:unstractured">
+			<include0 jcr:primaryType="nt:unstractured"
+				path="jcr:content"/>
+		</nt:folder>
+	</aggregates>
+
+    <indexRules
+        jcr:primaryType="nt:unstructured">
+	<nt:folder jcr:primaryType="nt:unstructured">
+		<properties jcr:primaryType="nt:unstructured">
+			<jcrTitle
+                    		jcr:primaryType="nt:unstructured"
+                    		name="jcr:content/jcr:title"
+				nodeScopeIndex="{Boolean}true"
+				useInSpellcheck="{Boolean}true"
+				useInSuggest="{Boolean}true"/>
+			<jcrCreated 
+				jcr:primaryType="nt:unstructured"
+				name="jcr:created"
+				ordered="{Boolean}true"
+				propertyIndex="{Boolean}true"
+				type="Date"/>
+			<brandPortalReplicationAction
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/dam:portalReplicationAction"
+				propertyIndex="{Boolean}true"/>
+			<nodeName 
+				jcr:primaryType="nt:unstructured"
+				function="fn:lower-case(fn:name())"
+				ordered="{Boolean}true"
+				propertyIndex="{Boolean}true"/>
+			<createModifiedCombined
+				jcr:primaryType="nt:unstructured"
+				function="fn:coalesce(jcr:content/@jcr:lastModified, @jcr:created)"
+				ordered="{Boolean}true"
+				propertyIndex="{Boolean}true"/>
+			<cqDiscardState
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/cq:discardState"
+				propertyIndex="{Boolean}true"/>
+			<cloudSourcingEnabled
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/cloudSourcingEnabled"
+				propertyIndex="{Boolean}true"
+				type="Boolean"/>
+			<cloudSourcingUsers
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/cloudSourcingUsers"
+				propertyIndex="{Boolean}true"/>	
+			<title
+				jcr:primaryType="nt:unstructured"
+				function="fn:lower-case(fn:coalesce(jcr:content/metadata/@dc:title, jcr:content/@jcr:title))"
+				ordered="{Boolean}true"
+				propertyIndex="{Boolean}true"/>
+			<cqDiscardedBy
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/cq:discardedBy"
+				propertyIndex="{Boolean}true"/>
+			<cqDiscardDate
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/cq:discardDate"
+				ordered="{Boolean}true"
+				propertyIndex="{Boolean}true"
+				type="Date"/>			
+			<folderMetadataSchema
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/folderMetadataSchema"
+				propertyIndex="{Boolean}true"
+				type="String"/>	
+			<damMetadataForm
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/dam:metadataForm"
+				propertyIndex="{Boolean}true"
+				type="String"/>	
+			<movedTimeStamp
+				jcr:primaryType="nt:unstructured"
+				name="jcr:content/datacom:movedTimeStamp"
+				propertyIndex="{Boolean}true"/>	
+			<primaryType
+				jcr:primaryType="nt:unstructured"
+				name="jcr:primaryType"
+				propertyIndex="{Boolean}true"/>	
+			<resourceType
+				jcr:primaryType="nt:unstructured"
+				name="sling:resourceType"
+				propertyIndex="{Boolean}true"
+				nullCheckEnabled="{Boolean}true"/>
+		</properties>
+	</nt:folder>
+     </indexRules>
+</jcr:root>

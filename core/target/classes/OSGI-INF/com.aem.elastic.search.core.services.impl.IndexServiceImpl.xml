@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.aem.elastic.search.core.services.impl.IndexServiceImpl" immediate="true" activate="activate" modified="activate">
+  <property name="indexMethod" type="String" value="POST"/>
+  <property name="grantType" type="String" value="client_credentials"/>
+  <property name="timeout" type="Integer" value="5000"/>
+  <property name="tokenExpiration" type="Integer" value="3590"/>
+  <property name="tokenGeneratorMethod" type="String" value="POST"/>
+  <property name="enabled" type="Boolean" value="true"/>
+  <property name="excludedPaths" type="String">/content/datacom/language-masters</property>
+  <service>
+    <provide interface="com.aem.elastic.search.core.services.IndexService"/>
+  </service>
+  <reference name="objectMapperService" interface="com.aem.elastic.search.core.services.ObjectMapperService" field="objectMapperService"/>
+  <reference name="serviceUserUtility" interface="com.aem.elastic.search.core.utils.ServiceUserUtility" field="serviceUserUtility"/>
+  <reference name="siteDomainConfigProvider" interface="com.aem.elastic.search.core.services.SiteDomainConfigProvider" field="siteDomainConfigProvider"/>
+  <reference name="thirdPartyApiHeaderIdentifierService" interface="com.aem.elastic.search.core.services.ThirdPartyApiHeaderIdentifierService" field="thirdPartyApiHeaderIdentifierService"/>
+  <reference name="utilService" interface="com.aem.elastic.search.core.services.UtilService" field="utilService"/>
+  <implementation class="com.aem.elastic.search.core.services.impl.IndexServiceImpl"/>
+</scr:component>

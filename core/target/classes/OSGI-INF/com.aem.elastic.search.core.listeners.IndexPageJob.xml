@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.aem.elastic.search.core.listeners.IndexPageJob" immediate="true">
+  <property name="service.id" type="String" value="DATACOM_Distribution_Listener"/>
+  <property name="service.description" type="String" value=" This event handler listents to the events on Distribution Add and Delete"/>
+  <property name="job.topics" type="String" value="datacom/indexpagejob"/>
+  <service>
+    <provide interface="org.apache.sling.event.jobs.consumer.JobConsumer"/>
+  </service>
+  <reference name="indexService" interface="com.aem.elastic.search.core.services.IndexService" field="indexService"/>
+  <implementation class="com.aem.elastic.search.core.listeners.IndexPageJob"/>
+</scr:component>
