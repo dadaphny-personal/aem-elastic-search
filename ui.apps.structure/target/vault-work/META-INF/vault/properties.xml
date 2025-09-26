@@ -4,7 +4,7 @@
 <comment>Elastic Search AEM - Repository Structure Package</comment>
 <entry key="cloudManagerTarget">none</entry>
 <entry key="allowIndexDefinitions">false</entry>
-<entry key="created">2025-09-22T04:52:46.551Z</entry>
+<entry key="created">2025-09-23T11:47:01.331Z</entry>
 <entry key="groupId">com.aem.elastic.search</entry>
 <entry key="name">aem-elastic-search.ui.apps.structure</entry>
 <entry key="description">Empty package that defines the structure of the Adobe Experience Manager repository the Code packages in this project deploy into.

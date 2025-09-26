@@ -4,7 +4,7 @@
 <comment>Elastic Search AEM - UI config</comment>
 <entry key="cloudManagerTarget">none</entry>
 <entry key="allowIndexDefinitions">false</entry>
-<entry key="created">2025-09-22T04:52:46.608Z</entry>
+<entry key="created">2025-09-23T11:47:01.391Z</entry>
 <entry key="groupId">com.aem.elastic.search</entry>
 <entry key="name">aem-elastic-search.ui.config</entry>
 <entry key="description">UI config package for Elastic Search AEM</entry>
