@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/com.aem.elastic.search.core.config.GlobalSearchConfig">
+  <OCD id="com.aem.elastic.search.core.config.GlobalSearchConfig" name="Datacom Global Search Configuration" description="API to be used to get the result for global search.">
+    <AD id="aemSearchEndpoint" type="String" name="AEM Search API path: " description="Provide the path to AEM search servlet."/>
+    <AD id="elasticSearchEndpoint" type="String" name="Elastic Search API path: " description="Provide the path with place holder for country code as it will chnage based on current page."/>
+    <AD id="timeoutInMilliseconds" type="Integer" name="Timeout: " description="Timeout in milliseconds, used in the various http-calls." default="5000"/>
+    <AD id="regex" type="String" name="Regular Expression: " description="Regular Expression to match country selector code." default="[a-z]{2}-[a-z]{2}"/>
+    <AD id="featureCfRootPath" type="String" name="Feature Content Root Path: " description="Root path where feature content fragment used in global search exists."/>
+    <AD id="featureImagePresetType" type="String" name="Feature Image DM preset type: " description="Enter the dynamic media preset type for featured image used in prefilter global search." default="smartCrop"/>
+    <AD id="featureImageSmartCropRendition" type="String" name="Feature Image Smart crop rendition: " description="Enter the dynamic media preset type for featured image used in prefilter global search." default="1x1"/>
+    <AD id="featureImageModifiers" type="String" name="Feature Image Modifiers: " description="Enter the dynamic media image modifiers for featured image used in prefilter global search." default="fit=constrain"/>
+    <AD id="searchSetingFragmentCollectionPath" type="String" name="Search Setting Fragment Collection Path: " description="Path where the search setting content fragments for various geo has been stored." default="/content/dam/system-files/datacom/search/global-search-serp-setting/serp-setting-collections/"/>
+  </OCD>
+</metatype:MetaData>

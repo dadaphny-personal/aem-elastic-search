@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/com.aem.elastic.search.core.config.IndexApiConfiguration">
+  <OCD id="com.aem.elastic.search.core.config.IndexApiConfiguration" name="Index API Configuration" description="Configuration to invoke AWS API. Check your AWS Service documentation for details.">
+    <AD id="indexEndpoint" type="String" name="Index API Endpoint: " description="API endpoint for indexing data to ElasticSearch. Must conform with propert URL structure. ex: https://example.domain.com/endpointpath"/>
+    <AD id="indexMethod" type="String" name="Index API Method: " default="POST"/>
+    <AD id="tokenGeneratorEndpoint" type="String" name="Token Generator Endpoint: " description="API endpoint for getting access token. Must conform with proper URL structure. ex: https://example: domain.com/endpointpath"/>
+    <AD id="grantType" type="String" name="Token Generator Grant Type: " default="client_credentials"/>
+    <AD id="clientID" type="String" name="Token Generator Client ID: "/>
+    <AD id="clientSecret" type="String" name="Token Generator Client Secret: "/>
+    <AD id="timeout" type="Integer" name="Timeout: " description="API call timeout in milliseconds. Default is 5000." default="5000"/>
+    <AD id="tokenExpiration" type="Integer" name="Token Expiration: " description="Token expiration in seconds. Default is 3590." default="3590"/>
+    <AD id="tokenGeneratorMethod" type="String" name="Token Generator Method: " description="default is POST" default="POST"/>
+    <AD id="enabled" type="Boolean" name="Enabled: " description="default is true" default="true"/>
+    <AD id="excludedPaths" type="String" cardinality="2147483647" name="Excluded Paths: " description="Paths to exclude from indexing." default="/content/datacom/language-masters"/>
+  </OCD>
+  <Designate pid="com.aem.elastic.search.core.services.impl.IndexServiceImpl">
+    <Object ocdref="com.aem.elastic.search.core.config.IndexApiConfiguration"/>
+  </Designate>
+</metatype:MetaData>

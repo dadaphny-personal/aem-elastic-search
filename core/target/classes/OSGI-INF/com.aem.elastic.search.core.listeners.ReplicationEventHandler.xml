@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.aem.elastic.search.core.listeners.ReplicationEventHandler" immediate="true">
+  <property name="service.description" type="String" value=" This   event handler listents to the events on Distribution Add and Delete"/>
+  <property name="event.topics" type="String" value="com/day/cq/replication"/>
+  <service>
+    <provide interface="org.osgi.service.event.EventHandler"/>
+  </service>
+  <reference name="jobManager" interface="org.apache.sling.event.jobs.JobManager" field="jobManager"/>
+  <implementation class="com.aem.elastic.search.core.listeners.ReplicationEventHandler"/>
+</scr:component>

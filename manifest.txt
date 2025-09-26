@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: Lakshya
+Bundle-ManifestVersion: 2
+Bundle-Name: Elastic Search High REST Client 7.10.0 Bundle
+Bundle-Description: Package elasticsearch high level rest client 7.10.0 in an OSGi bundle
+Bundle-Version: 7.10.0
+Bundle-ClassPath: .,elasticsearch-rest-high-level-client-7.10.0.jar
+Bundle-SymbolicName: org.elasticsearch.high.level.rest.client
+Export-Package: org.elasticsearch.*
