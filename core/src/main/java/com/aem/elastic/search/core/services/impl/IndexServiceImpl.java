@@ -1,6 +1,9 @@
 package com.aem.elastic.search.core.services.impl;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,11 +24,13 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.wcm.core.components.models.Page;
 import com.aem.elastic.search.core.config.IndexApiConfiguration;
 import com.aem.elastic.search.core.models.PageDocument;
+import com.aem.elastic.search.core.pojo.BearerToken;
 import com.aem.elastic.search.core.services.IndexService;
 import com.aem.elastic.search.core.services.ObjectMapperService;
 import com.aem.elastic.search.core.services.SiteDomainConfigProvider;
 import com.aem.elastic.search.core.services.ThirdPartyApiHeaderIdentifierService;
 import com.aem.elastic.search.core.services.UtilService;
+import com.aem.elastic.search.core.utils.CacheManager;
 import com.aem.elastic.search.core.utils.ServiceUserUtility;
 import com.day.crx.JcrConstants;
 
@@ -47,7 +52,7 @@ public class IndexServiceImpl implements IndexService {
 	private static final String GRANT_TYPE = "grant_type";
 	private static final String CLIENT_ID = "client_id";
 	private static final String CLIENT_SECRET = "client_secret";
-	private static final String AUTHORIZATION = "Authorization";
+	private static final String AUTHORIZATION_HEADER = "Authorization";
 	private static final String CONTENT_TYPE_HEADER = "Content-Type";
 	private static final String TOKEN_CONTENT_TYPE = "application/x-www=form-urlencoded";
 	private static final String INDEX_CONTENT_TYPE = "application/json";
@@ -133,6 +138,17 @@ public class IndexServiceImpl implements IndexService {
 		LOGGER.debug("Page Indexing is disabled in configuration");
 		return jobResultValue;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	private Boolean shouldProcess(Resource resource) {
 		if (resource != null) {
@@ -164,6 +180,61 @@ public class IndexServiceImpl implements IndexService {
 					CIOUtils.getPageGeo(originalPageResource.adaptTo(com.day.cq.wcm.api.Page.class)));
 		}
 		return pageDocument;
+	}
+
+	/**
+	 * callApi
+	 * 
+	 * @param CloseableHttpResponse
+	 * @return CloseableHttpResponse
+	 * @throws IOException
+	 */
+	private CloseableHttpResponse callApi(Map<String, Object> payload) throws IOException {
+		CloseableHttpResponse response = null;
+
+		// get token from cache
+		final BearerToken cachedToken = (BearerToken) CacheManager.getCache(IndexServiceImpl.TOKEN_CACHE);
+		String token = "";
+		final LocalDateTime now = LocalDateTime.now();
+
+		// check if token is valid
+		if (cachedToken != null) {
+			// if valid, use cache token
+			token = cachedToken.getToken();
+			final LocalDateTime tokenCreatedTime = cachedToken.getCreatedDateTime();
+
+			// check for expiration token. Refresh if more than 3590 seconds or about 1
+			// hour.
+			Duration duration = Duration.between(tokenCreatedTime, now);
+			if (duration.getSeconds() >= this.config.tokenExpiration()) {
+				// get new token
+				token = getToken(now);
+			}
+		} else {
+			// get new token
+			token = getToken(now);
+		}
+
+		// if valid token
+		if (StringUtils.isNotBlank(token)) {
+			// index api parameters
+			final String payloadJson = this.objectMapperService.getObjectMapper().writeValueAsString(payload);
+			final Map<String, String> headers = new HashMap<>();
+
+			// add token to header
+			headers.put(IndexServiceImpl.AUTHORIZATION_HEADER, String.format("Bearer %s", token));
+			// set required headers
+			headers.put(IndexServiceImpl.CONTENT_TYPE_HEADER, IndexServiceImpl.INDEX_CONTENT_TYPE);
+			// set required headers
+			headers.put("Origin", siteDomainConfigProvider.defaultDomain());
+			// set x-aem-edge-key
+			headers.put("x-aem-edge-key", thirdPartyApiHeaderIdentifierService.getAemEdgeKey());
+
+			response = HttpUtils.invoke(this.utilService.getHttpClient(this.config.timeout()),
+					this.config.indexEndpoint(), this.config.indexMethod(), payload, headers);
+		}
+		return response;
+
 	}
 
 	/**

@@ -4,7 +4,7 @@
 <comment>Elastic Search AEM - All</comment>
 <entry key="cloudManagerTarget">all</entry>
 <entry key="allowIndexDefinitions">false</entry>
-<entry key="created">2025-09-22T04:52:44.714Z</entry>
+<entry key="created">2025-09-23T11:47:00.621Z</entry>
 <entry key="groupId">com.aem.elastic.search</entry>
 <entry key="name">aem-elastic-search.all</entry>
 <entry key="description">All content package for Elastic Search AEM</entry>

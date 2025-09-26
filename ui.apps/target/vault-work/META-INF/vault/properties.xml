@@ -4,7 +4,7 @@
 <comment>Elastic Search AEM - UI apps</comment>
 <entry key="allowIndexDefinitions">false</entry>
 <entry key="acHandling">merge</entry>
-<entry key="created">2025-09-22T04:52:46.167Z</entry>
+<entry key="created">2025-09-23T11:47:01.130Z</entry>
 <entry key="groupId">com.aem.elastic.search</entry>
 <entry key="description">UI apps package for Elastic Search AEM</entry>
 <entry key="version">1.0.0-SNAPSHOT</entry>

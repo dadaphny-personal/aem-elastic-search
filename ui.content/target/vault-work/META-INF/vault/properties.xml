@@ -5,7 +5,7 @@
 <entry key="allowIndexDefinitions">false</entry>
 <entry key="acHandling">merge</entry>
 <entry key="dependencies-locations">com.aem.elastic.search:aem-elastic-search.ui.apps:1.0.0-SNAPSHOT=maven:com.aem.elastic.search:aem-elastic-search.ui.apps:1.0.0-SNAPSHOT:zip</entry>
-<entry key="created">2025-09-22T04:52:46.671Z</entry>
+<entry key="created">2025-09-23T11:47:01.463Z</entry>
 <entry key="groupId">com.aem.elastic.search</entry>
 <entry key="description">UI content package for Elastic Search AEM</entry>
 <entry key="version">1.0.0-SNAPSHOT</entry>
